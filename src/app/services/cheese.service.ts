@@ -7,16 +7,16 @@ import { environment } from '../../environments/environment.development';
 })
 export class CheeseService {
 
-  serverUrl: string = environment.serverUrl
-  //injecting HttpClient dependency at construct time for API calls
+  serverUrl: string = environment.serverUrl;
+
+  // injecting HttpClient dependency at construct time for API calls
   constructor(private http: HttpClient) { }
 
-  getCheeses(){
+  getCheeses() {
     return this.http.get(`${this.serverUrl}/cheeses`);
   }
 
-
-  addCheese(cheese: any){
+  addCheese(cheese: any) {
     return this.http.post(`${this.serverUrl}/cheeses`, cheese)
   }
 }
