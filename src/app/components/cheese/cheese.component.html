@@ -1,7 +1,41 @@
 <h1>Check out our Cheese</h1>
-<ul>
-    <li *ngFor="let cheese of CHEESES">
-        {{cheese.name}}
-    </li>
-    
-</ul>
+<section class="row">
+    <section class="col-lg-6">
+        <ul class="list-group">
+            <li *ngFor="let cheese of CHEESES" class="list-group-item">
+                <h4 class="list-group-item-heading">
+                    {{ cheese.name }}
+                </h4>
+                <h6>{{ cheese.category }}</h6>
+                <h6 *ngIf="cheese.price">
+                    ${{ cheese.price }}
+                </h6>
+            </li>
+        </ul>
+    </section>
+    <section class="col-lg-6">
+        <fieldset>
+            <label for="name">Name: *</label> 
+            <input required [(ngModel)]="name" />
+        </fieldset>
+        <fieldset>
+            <label for="price">Price:</label>
+            <input type="number" min="0.01" [(ngModel)]="price" />
+        </fieldset>
+        <fieldset>
+            <label for="stinkRating">Stink Rating: *</label>
+            <select [(ngModel)]="stinkRating">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <label for="category">Category: *</label>
+            <input required [(ngModel)]="category" />
+        </fieldset>
+        <button class="btn btn-primary offset-2" (click)="addCheese()">Save</button>
+    </section>
+</section>

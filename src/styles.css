@@ -4,3 +4,11 @@
 main{
     margin-left: 100px;
 }
+
+fieldset{
+    margin:5px;
+}
+
+label{
+    width:120px;
+}
