@@ -3,7 +3,7 @@
     <section class="col-lg-6">
         <ul class="list-group">
             <li *ngFor="let cheese of CHEESES" class="list-group-item">
-                <h4 class="list-group-item-heading">
+                <h4 class="list-group-item-heading" (click)="selectCheese(cheese)">
                     {{ cheese.name }}
                 </h4>
                 <h6>{{ cheese.category }}</h6>
@@ -36,6 +36,9 @@
             <label for="category">Category: *</label>
             <input required [(ngModel)]="category" />
         </fieldset>
-        <button class="btn btn-primary offset-2" (click)="addCheese()">Save</button>
+        <button class="btn btn-primary offset-2 m-2" *ngIf="!_id" (click)="addCheese()">Save</button>
+        <button class="btn btn-primary offset-2 m-2" *ngIf="_id" (click)="updateCheese()">Update</button> 
+        <button class="btn btn-danger" *ngIf="_id" (click)="deleteCheese(_id)">Delete</button>
+        
     </section>
 </section>

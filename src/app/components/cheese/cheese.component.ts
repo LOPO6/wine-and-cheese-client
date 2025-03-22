@@ -3,10 +3,13 @@ import { NgFor, NgIf } from '@angular/common';
 import { CheeseService } from '../../services/cheese.service';
 import { FormsModule } from '@angular/forms';
 
-// export class Cheese {
-//   _id: string | undefined;
-//   name: string | undefined;
-// }
+ export class Cheese {
+   _id: string | undefined;
+   name: string | undefined;
+   price: number | undefined;
+   stinkRating: number | undefined;
+   category: string | undefined;
+ }
 
 @Component({
   selector: 'app-cheese',
@@ -47,6 +50,7 @@ export class CheeseComponent implements OnInit {
   }
 
   resetForm(): void {
+    this._id = undefined;
     this.name = undefined;
     this.price = undefined;
     this.stinkRating = undefined;
@@ -55,6 +59,45 @@ export class CheeseComponent implements OnInit {
 
   ngOnInit() {
     this.getCheeses();
+  }
+
+  selectCheese(cheese: Cheese){
+    this._id = cheese._id;
+    this.name = cheese.name;
+    this.price = cheese.price;
+    this.stinkRating = cheese.stinkRating;
+    this.category = cheese.category;
+
+
+  }
+
+  deleteCheese(_id: string){
+    if(confirm('Are you sure you want to delete this cheese?')){
+    this.service.deleteCheese(_id).subscribe(response=>{
+      this.getCheeses();
+      this.resetForm();
+
+
+    });
+  }
+  }
+
+  updateCheese(): void{
+    let cheese={
+      _id: this._id,
+      name: this.name,
+      price: this.price,
+      stinkRatingthis: this.stinkRating,
+      category: this.category
+
+
+    }
+    this.service.updateCheese(cheese).subscribe(response=>{
+      this.getCheeses();
+      this.resetForm();
+    })
+
+
   }
 
   // CHEESES: Cheese[] = [
