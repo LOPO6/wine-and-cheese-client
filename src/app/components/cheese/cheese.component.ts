@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { CheeseService } from '../../services/cheese.service';
 import { FormsModule } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
  export class Cheese {
    _id: string | undefined;
@@ -24,8 +25,9 @@ export class CheeseComponent implements OnInit {
   price: number | undefined;
   stinkRating: number | undefined;
   category: string | undefined;
+  username: string | null = null;
 
-  constructor(private service: CheeseService) {}
+  constructor(private service: CheeseService, private authService: AuthService) {}
 
   getCheeses(): void {
     this.service.getCheeses().subscribe(response => {
@@ -59,6 +61,12 @@ export class CheeseComponent implements OnInit {
 
   ngOnInit() {
     this.getCheeses();
+
+
+    //check auth service for global username so we can show/hide links
+    this.authService.username.subscribe((username)=>{
+      this.username = username
+    });
   }
 
   selectCheese(cheese: Cheese){

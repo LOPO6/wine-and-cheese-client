@@ -7,8 +7,15 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-link" routerLink="/cheese"><i class="bi bi-pie-chart-fill"></i> Cheese</a>
+          
+          
+        </div>
+        <div class="navbar-nav ms-auto" *ngIf="!username">
           <a class="nav-link" routerLink="/register"><i class="bi bi-person-fill-add"></i> Register</a>
           <a class="nav-link" routerLink="/login"><i class="bi bi-person-fill-lock"></i> Login</a>
+        </div>
+        <div class="navbar-nav ms-auto" *ngIf="username">
+          <a class="nav-link"><i class="bi bi-person"></i> {{username}}</a>
           <a class="nav-link" routerLink="/logout"><i class="bi bi-box-arrow-right"></i> Logout</a>
         </div>
       </div>

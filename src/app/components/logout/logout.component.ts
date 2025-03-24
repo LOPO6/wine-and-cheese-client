@@ -14,7 +14,12 @@ export class LogoutComponent implements OnInit{
   ngOnInit(): void {
     //run automatically when component instantiated
     this.authService.logout().subscribe(response => {
-      this.router.navigate(['/'])
+      //clear global username
+      this.authService.clearUsername();
+      
+      
+      //redirect
+      this.router.navigate(['/']);
     })
 
   }

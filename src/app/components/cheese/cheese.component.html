@@ -13,7 +13,7 @@
             </li>
         </ul>
     </section>
-    <section class="col-lg-6">
+    <section class="col-lg-6" *ngIf="username">
         <fieldset>
             <label for="name">Name: *</label> 
             <input required [(ngModel)]="name" />
