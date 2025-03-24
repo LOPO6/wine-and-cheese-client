@@ -1,14 +1,13 @@
-<main class="container">
-    <h1>Login</h1>
-    <form>
-        <fieldset>
-            <label>Username:</label>
-            <input />
-        </fieldset>
-        <fieldset>
-            <label>Password:</label>
-            <input type="password" />
-        </fieldset>
-        <button class="btn btn-primary offset-2">Login</button>
-    </form>
-</main>
+<h5 [ngClass]="messageClass">{{message}}</h5>
+ <fieldset>
+     <label>Username:</label>
+     <input [(ngModel)]="username" required />
+ </fieldset>
+ <fieldset>
+     <label>Password:</label>
+     <input type="password" [(ngModel)]="password" required />
+ </fieldset>
+ <button class="btn btn-primary offset-2" (click)="login()">
+     <i class="bi bi-person-fill-lock"></i> Login
+ </button>
+

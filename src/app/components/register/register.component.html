@@ -1,18 +1,19 @@
-<main class="container">
-    <h1>Register</h1>
-    <form>
+<h1>Register</h1>
+<h5 [ngClass]="messageClass">{{message}}</h5>
+
         <fieldset>
             <label>Username:</label>
-            <input />
+            <input [(ngModel)]="username" required type="email"/>
         </fieldset>
         <fieldset>
             <label>Password:</label>
-            <input type="password" />
+            <input type="password" [(ngModel)]="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
         </fieldset>
         <fieldset>
             <label>Confirm:</label>
-            <input type="password" />
+            <input type="password" [(ngModel)]="confirm" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
         </fieldset>
-        <button class="btn btn-primary offset-2">Login</button>
-    </form>
-</main>
+        <button class="btn btn-primaty offset-2" (click)="register()">
+            <i class="bi bi-person-fill-add"></i> Register
+        </button>
+    
